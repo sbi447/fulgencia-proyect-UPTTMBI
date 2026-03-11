@@ -1,12 +1,33 @@
 const prompt = require("prompt-sync")({sigint:true});
-//Holas
-// 1. Array de objetos para almacenar los datos
+const readline = require('readline-sync');
+const BD = require("./dataBase.js")
+
+// CONSOLA DE CONTRASEÑA
+let Key = "fulgencia123";
+let TestKey;
+let a = 1;
+
+console.log("Hello dear user, welcome to FulgenciaRegister your trusted bank\n")
+TestKey = prompt("Insert Your Password: ");
+
+while(TestKey!==Key && a<3){
+	console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
+	a++;
+	TestKey = prompt("Insert Your Password: ");
+	}
+	
+if(TestKey===Key){
+	console.log("Your Conection is Succesfull");
+
+BD.abrirBD();
+
+// Array de objetos para almacenar los datos
 let estudiantes = [];
 
-// --- 2. FUNCIONES (Lógica del Proyecto) ---
+// --- FUNCIONES (Lógica del Proyecto) ---
 
 // Función para REGISTRAR (Create)
-function registrarEstudiante() {
+function registrarEstudiante(){
     console.log("\n--- Registro de Nuevo Estudiante ---");
     let ci = prompt("Ingrese Cédula: ");
     let nombre = prompt("Ingrese Nombre: ");
@@ -22,7 +43,7 @@ function registrarEstudiante() {
 }
 
 // Función para LEER todos (Read)
-function verEstudiantes() {
+function verEstudiantes(){
     console.log("\n--- Lista de Alumnos Registrados ---");
     if (estudiantes.length === 0) {
         console.log("No hay alumnos en el sistema.");
@@ -33,7 +54,7 @@ function verEstudiantes() {
 }
 
 // Función para MODIFICAR (Update)
-function modificarEstudiante() {
+function modificarEstudiante(){
     let ciBusca = prompt("Ingrese la Cédula del alumno a modificar: ");
     let alumno = estudiantes.find(e => e.ci === ciBusca);
 
@@ -48,7 +69,7 @@ function modificarEstudiante() {
 }
 
 // Función para ELIMINAR (Delete)
-function eliminarEstudiante() {
+function eliminarEstudiante(){
     let ciBusca = prompt("Ingrese la Cédula del alumno a eliminar: ");
     let indice = estudiantes.findIndex(e => e.ci === ciBusca);
 
@@ -63,8 +84,7 @@ function eliminarEstudiante() {
     }
 }
 
-// --- 3. MENÚ PRINCIPAL (Control de flujo) ---
-
+// --- MENÚ PRINCIPAL (Control de flujo) ---
 function menuPrincipal() {
     let opcion;
     do {
@@ -90,5 +110,7 @@ function menuPrincipal() {
     } while (opcion !== '5');
 }
 
-// Iniciar el programa
-menuPrincipal();
+menuPrincipal(); // Iniciar el programa
+
+BD.cerrarBD(); //Cerrar Base de Datos
+}

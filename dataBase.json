@@ -1,0 +1,37 @@
+{
+  "estudiantes": [
+    {
+      "ci": "1234",
+      "nombre": "evee",
+      "apellido": "frabxi",
+      "notas": [
+        "2",
+        "3",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "ci": "4321",
+      "nombre": "francoc",
+      "apellido": "jdjsjs",
+      "notas": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "ci": "",
+      "nombre": "",
+      "apellido": "",
+      "notas": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

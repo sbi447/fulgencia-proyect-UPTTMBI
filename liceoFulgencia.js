@@ -9,7 +9,7 @@ let Key = "fulgencia123";
 let TestKey;
 let a = 1;
 
-console.log("Hello dear user, welcome to FulgenciaRegister your trusted bank\n")
+console.log("Hello dear user, welcome to FulgenciaRegister\n")
 TestKey = prompt("Insert Your Password: ");
 
 while(TestKey!==Key && a<3){
@@ -31,25 +31,27 @@ function menuPrincipal() {
         console.log("  SISTEMA DE PREINSCRIPCIÓN Y CONSTANCIAS ");
         console.log("==========================================");
         console.log("1. Registrar Estudiante");
-        console.log("2. Ver Todos los Alumnos");
-        console.log("3. Modificar Datos");
-        console.log("4. Eliminar Registro");
-        console.log("5. Salir");
+        console.log("2. Ver Todos los Estudiantes");
+        console.log("3. Buscar Un Estudiante");
+        console.log("4. Modificar Datos");
+        console.log("5. Eliminar Registro");
+        console.log("6. Salir");
         
         opcion = prompt("Seleccione una opción: ");
 
         switch (opcion) {
             case '1': BD.registrarEstudiante(); break; // BD - ON
             case '2': BD.verEstudiantes(); break; //BD - ON
-            case '3': BD.modificarEstudiante(); break; //BD - ON
-            case '4': BD.eliminarEstudiante(); break; //BD - ON
-            case '5': 
+            case '3': BD.buscarAlumno(); break; //BD - ON
+            case '4': BD.modificarEstudiante(); break; //BD - ON
+            case '5': BD.eliminarEstudiante(); break; //BD - ON
+            case '6': 
 				console.log("Cerrando sistema... ¡Hasta luego!"); 
 				readline.keyInPause("Press Any Key to Exit...");
 				console.clear(); break;
             default: console.log("Opcion no válida, intente de nuevo.");
         }
-    } while (opcion !== '5');
+    } while (opcion !== '6');
 }
 
 menuPrincipal(); // Iniciar el programa

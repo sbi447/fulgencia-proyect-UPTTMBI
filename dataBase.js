@@ -36,13 +36,16 @@ module.exports.verEstudiantes=()=>{
     } else {console.table(estudiantes);}
 }
 
+// Ver 1 Alumno
 module.exports.buscarAlumno=ci=>{
-    return estudiantes.find(alumno=>alumno.ci==ci)
+    let ciBusca = prompt("Ingrese la Cédula del Alumno: ");
+    let alumno = estudiantes.find(e => e.ci === ciBusca);
+    console.table(alumno);
 }
 
 // Función para MODIFICAR (Update) --- BD: ON
 module.exports.modificarEstudiante=()=>{
-    let ciBusca = prompt("Ingrese la Cédula del alumno a modificar: ");
+    let ciBusca = prompt("Ingrese la Cédula del Alumno a Modificar: ");
     let alumno = estudiantes.find(e => e.ci === ciBusca);
 
     if (alumno) {

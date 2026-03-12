@@ -2,6 +2,8 @@ const prompt = require("prompt-sync")({sigint:true});
 const readline = require('readline-sync');
 const BD = require("./dataBase.js")
 
+console.clear()
+
 // CONSOLA DE CONTRASEÑA
 let Key = "fulgencia123";
 let TestKey;
@@ -14,67 +16,14 @@ while(TestKey!==Key && a<3){
 	console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
 	a++;
 	TestKey = prompt("Insert Your Password: ");
-	}
+}
 	
 if(TestKey===Key){
 	console.log("Your Conection is Succesfull");
 
 BD.abrirBD();
 
-// Array de objetos para almacenar los datos
-let estudiantes = [];
-
-// --- FUNCIONES ---
-
-// Función para REGISTRAR (Create) --- BD: ON
-function registrarEstudiante(){
-    console.log("\n--- Registro de Nuevo Estudiante ---");
-    let ci = prompt("Ingrese Cédula: ");
-    let nombre = prompt("Ingrese Nombre: ");
-    let apellido = prompt("Ingrese Apellido: ");
-
-    // Validación básica: evitar duplicados por CI
-    if (estudiantes.find(e => e.ci === ci)) {
-        console.log(" Error: Esa cédula ya existe.");
-    } else {
-        estudiantes.push({ ci, nombre, apellido });
-        console.log(" Estudiante registrado con éxito.");
-        BD.registarAlumno(ci,nombre,apellido)
-    }
-}
-
-// Función para MODIFICAR (Update)
-function modificarEstudiante(){
-    let ciBusca = prompt("Ingrese la Cédula del alumno a modificar: ");
-    let alumno = estudiantes.find(e => e.ci === ciBusca);
-
-    if (alumno) {
-        console.log(`Modificando a: ${alumno.nombre} ${alumno.apellido}`);
-        alumno.nombre = prompt("Nuevo nombre (deja vacío para mantener): ") || alumno.nombre;
-        alumno.apellido = prompt("Nuevo apellido (deja vacío para mantener): ") || alumno.apellido;
-        console.log(" Datos actualizados correctamente.");
-    } else {
-        console.log(" Estudiante no encontrado.");
-    }
-}
-
-// Función para ELIMINAR (Delete)
-function eliminarEstudiante(){
-    let ciBusca = prompt("Ingrese la Cédula del alumno a eliminar: ");
-    let indice = estudiantes.findIndex(e => e.ci === ciBusca);
-
-    if (indice !== -1) {
-        let confirmado = prompt(`¿Seguro que desea eliminar a ${estudiantes[indice].nombre}? (s/n): `);
-        if (confirmado.toLowerCase() === 's') {
-            estudiantes.splice(indice, 1); // Elimina el elemento del array
-            console.log(" Registro eliminado.");
-        }
-    } else {
-        console.log(" No se encontró ningún estudiante con esa cédula.");
-    }
-}
-
-// --- MENÚ PRINCIPAL (Control de flujo) ---
+// --- MENÚ PRINCIPAL (Control de Flujo) ---
 function menuPrincipal() {
     let opcion;
     do {
@@ -90,11 +39,14 @@ function menuPrincipal() {
         opcion = prompt("Seleccione una opción: ");
 
         switch (opcion) {
-            case '1': registrarEstudiante(); break; // BD - ON
+            case '1': BD.registrarEstudiante(); break; // BD - ON
             case '2': BD.verEstudiantes(); break; //BD - ON
-            case '3': modificarEstudiante(); break;
-            case '4': eliminarEstudiante(); break;
-            case '5': console.log("Cerrando sistema... ¡Hasta luego!"); console.clear(); break;
+            case '3': BD.modificarEstudiante(); break;
+            case '4': BD.eliminarEstudiante(); break;
+            case '5': 
+				console.log("Cerrando sistema... ¡Hasta luego!"); 
+				readline.keyInPause("Press Any Key to Exit...");
+				console.clear(); break;
             default: console.log("Opcion no válida, intente de nuevo.");
         }
     } while (opcion !== '5');

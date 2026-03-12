@@ -1,30 +1,88 @@
 //DATABASE FULGENCIA
+const prompt = require("prompt-sync")({sigint:true});
+const readline = require('readline-sync');
 let estudiantes=[];
 let dataBase;
 let fs = require("fs");
 
-module.exports.registarAlumno=(ci,nombre,apellido)=>{
+function registarAlumno(ci,nombre,apellido){
     estudiantes.push({
         ci:ci,
         nombre:nombre,
         apellido:apellido
     })
 }
+// Función para REGISTRAR (Create) --- BD: ON
+module.exports.registrarEstudiante=()=>{
+    console.log("\n--- Registro de Nuevo Estudiante ---");
+    let ci = prompt("Ingrese Cédula: ");
+    let nombre = prompt("Ingrese Nombre: ");
+    let apellido = prompt("Ingrese Apellido: ");
+
+    // Validación básica: evitar duplicados por CI
+    if (estudiantes.find(e => e.ci === ci)) {
+        console.log(" Error: Esa cédula ya existe.");
+    } else {
+        console.log(" Estudiante registrado con éxito.");
+        registarAlumno(ci,nombre,apellido)
+    }
+}
+
+// Ver Lista De Estudiantes --- BD: ON
+module.exports.verEstudiantes=()=>{
+	console.clear("\n--- Lista de Alumnos Registrados ---");
+    if (estudiantes.length === 0) {
+        console.log("No hay alumnos en el sistema.");
+    } else {console.table(estudiantes);}
+}
 
 module.exports.buscarAlumno=ci=>{
     return estudiantes.find(alumno=>alumno.ci==ci)
 }
 
-module.exports.verEstudiantes=()=>{
-    console.log("\n--- Lista de Alumnos Registrados ---");
-    if (estudiantes.length === 0) {
-        console.log("No hay alumnos en el sistema.");
+// Función para MODIFICAR (Update) --- BD: ON
+module.exports.modificarEstudiante=()=>{
+    let ciBusca = prompt("Ingrese la Cédula del alumno a modificar: ");
+    let alumno = estudiantes.find(e => e.ci === ciBusca);
+
+    if (alumno) {
+        console.log(`Modificando a: ${alumno.nombre} ${alumno.apellido}`);
+        alumno.nombre = prompt("Nuevo nombre (deja vacío para mantener): ") || alumno.nombre;
+        alumno.apellido = prompt("Nuevo apellido (deja vacío para mantener): ") || alumno.apellido;
+        console.log(" Datos actualizados correctamente.");
     } else {
-        // Mostramos los datos de forma tabular
-        console.table(estudiantes);
+        console.log(" Estudiante no encontrado.");
     }
 }
+// Función para ELIMINAR (Delete) --- BD: ON
+module.exports.eliminarEstudiante=()=>{
+    let ciBusca = prompt("Ingrese la Cédula del alumno a eliminar: ");
+    let indice = estudiantes.findIndex(e => e.ci === ciBusca);
 
+    if (indice !== -1) {
+        let confirmado = prompt(`¿Seguro que desea eliminar a ${estudiantes[indice].nombre}? (s/n): `);
+        if (confirmado.toLowerCase() === 's'){
+			let Key = "fulgencia123";
+			let TestKey;
+			let a = 1;
+			TestKey = prompt("Insert Your Password for Continue: ");
+
+			while(TestKey!==Key && a<3){
+				console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
+				a++;
+				TestKey = prompt("Insert Your Password: ");
+			}
+			if(TestKey===Key){
+				estudiantes.splice(indice, 1);
+				console.log(" Registro eliminado.");
+			}
+    } else {
+        console.log(" No se encontró ningún estudiante con esa cédula.");
+		}
+	}
+}
+
+// OPEN & CLOSE BD
 module.exports.abrirBD=()=>{
     dataBase= fs.readFileSync("dataBase.json","utf8");
     estudiantes=JSON.parse(dataBase).estudiantes

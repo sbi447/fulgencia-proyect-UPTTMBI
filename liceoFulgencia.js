@@ -41,8 +41,8 @@ function menuPrincipal() {
         switch (opcion) {
             case '1': BD.registrarEstudiante(); break; // BD - ON
             case '2': BD.verEstudiantes(); break; //BD - ON
-            case '3': BD.modificarEstudiante(); break;
-            case '4': BD.eliminarEstudiante(); break;
+            case '3': BD.modificarEstudiante(); break; //BD - ON
+            case '4': BD.eliminarEstudiante(); break; //BD - ON
             case '5': 
 				console.log("Cerrando sistema... ¡Hasta luego!"); 
 				readline.keyInPause("Press Any Key to Exit...");

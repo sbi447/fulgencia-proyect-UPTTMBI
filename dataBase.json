@@ -1,37 +1,19 @@
 {
   "estudiantes": [
     {
-      "ci": "1234",
-      "nombre": "evee",
-      "apellido": "frabxi",
-      "notas": [
-        "2",
-        "3",
-        "2",
-        "3"
-      ]
+      "ci": "32117825",
+      "nombre": "Sebastian",
+      "apellido": "Briceno"
     },
     {
-      "ci": "4321",
-      "nombre": "francoc",
-      "apellido": "jdjsjs",
-      "notas": [
-        0,
-        0,
-        0,
-        0
-      ]
+      "ci": "32564788",
+      "nombre": "Karmelo",
+      "apellido": "Montes"
     },
     {
-      "ci": "",
-      "nombre": "",
-      "apellido": "",
-      "notas": [
-        0,
-        0,
-        0,
-        0
-      ]
+      "ci": "33157825",
+      "nombre": "Clau",
+      "apellido": "Montilla"
     }
   ]
 }

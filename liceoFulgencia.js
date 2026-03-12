@@ -46,8 +46,7 @@ function menuPrincipal() {
             case '4': BD.modificarEstudiante(); break; //BD - ON
             case '5': BD.eliminarEstudiante(); break; //BD - ON
             case '6': 
-				console.log("Cerrando sistema... ¡Hasta luego!"); 
-				readline.keyInPause("Press Any Key to Exit...");
+				readline.keyInPause("Cerrando sistema... ¡Hasta luego!");
 				console.clear(); break;
             default: console.log("Opcion no válida, intente de nuevo.");
         }

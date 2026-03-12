@@ -24,7 +24,7 @@ BD.abrirBD();
 // Array de objetos para almacenar los datos
 let estudiantes = [];
 
-// --- FUNCIONES (Lógica del Proyecto) ---
+// --- FUNCIONES ---
 
 // Función para REGISTRAR (Create) --- BD: ON
 function registrarEstudiante(){
@@ -40,17 +40,6 @@ function registrarEstudiante(){
         estudiantes.push({ ci, nombre, apellido });
         console.log(" Estudiante registrado con éxito.");
         BD.registarAlumno(ci,nombre,apellido)
-    }
-}
-
-// Función para LEER todos (Read)
-function verEstudiantes(){
-    console.log("\n--- Lista de Alumnos Registrados ---");
-    if (estudiantes.length === 0) {
-        console.log("No hay alumnos en el sistema.");
-    } else {
-        // Mostramos los datos de forma tabular
-        console.table(estudiantes);
     }
 }
 
@@ -101,11 +90,11 @@ function menuPrincipal() {
         opcion = prompt("Seleccione una opción: ");
 
         switch (opcion) {
-            case '1': registrarEstudiante(); break;
-            case '2': verEstudiantes(); break;
+            case '1': registrarEstudiante(); break; // BD - ON
+            case '2': BD.verEstudiantes(); break; //BD - ON
             case '3': modificarEstudiante(); break;
             case '4': eliminarEstudiante(); break;
-            case '5': console.log("Cerrando sistema... ¡Hasta luego!");console.clear(); break;
+            case '5': console.log("Cerrando sistema... ¡Hasta luego!"); console.clear(); break;
             default: console.log("Opcion no válida, intente de nuevo.");
         }
     } while (opcion !== '5');

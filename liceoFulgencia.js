@@ -26,7 +26,7 @@ let estudiantes = [];
 
 // --- FUNCIONES (Lógica del Proyecto) ---
 
-// Función para REGISTRAR (Create)
+// Función para REGISTRAR (Create) --- BD: ON
 function registrarEstudiante(){
     console.log("\n--- Registro de Nuevo Estudiante ---");
     let ci = prompt("Ingrese Cédula: ");
@@ -39,6 +39,7 @@ function registrarEstudiante(){
     } else {
         estudiantes.push({ ci, nombre, apellido });
         console.log(" Estudiante registrado con éxito.");
+        BD.registarAlumno(ci,nombre,apellido)
     }
 }
 

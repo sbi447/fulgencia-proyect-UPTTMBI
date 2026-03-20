@@ -14,7 +14,6 @@ function registarAlumno(ci,nombre,apellido){
 }
 // Función para REGISTRAR (Create) --- BD: ON
 module.exports.registrarEstudiante=()=>{
-    console.log("\n--- Registro de Nuevo Estudiante ---");
     let ci = prompt("Ingrese Cédula: ");
     let nombre = prompt("Ingrese Nombre: ");
     let apellido = prompt("Ingrese Apellido: ");
@@ -30,23 +29,28 @@ module.exports.registrarEstudiante=()=>{
 
 // Ver Lista De Estudiantes --- BD: ON
 module.exports.verEstudiantes=()=>{
-	console.clear("\n--- Lista de Alumnos Registrados ---");
     if (estudiantes.length === 0) {
         console.log("No hay alumnos en el sistema.");
-    } else {console.table(estudiantes);}
+    }else{
+        console.table(estudiantes);}
 }
 
 // Ver 1 Alumno
 module.exports.buscarAlumno=ci=>{
     let ciBusca = prompt("Ingrese la Cédula del Alumno: ");
     let alumno = estudiantes.find(e => e.ci === ciBusca);
+    if (alumno === undefined){
+        console.clear()
+        console.log("Alumno No Existente - No Registrado")
+    }else{
     console.table(alumno);
+    }
 }
 
 // Función para MODIFICAR (Update) --- BD: ON
 module.exports.modificarEstudiante=()=>{
     let ciBusca = prompt("Ingrese la Cédula del Alumno a Modificar: ");
-    let alumno = estudiantes.find(e => e.ci === ciBusca);
+    let alumno =estudiantes.find(e => e.ci === ciBusca);
 
     if (alumno) {
         console.log(`Modificando a: ${alumno.nombre} ${alumno.apellido}`);

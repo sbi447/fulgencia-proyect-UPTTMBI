@@ -40,8 +40,12 @@ function menuPrincipal() {
         opcion = prompt("Seleccione una opción: ");
 
         switch (opcion) {
-            case '1': BD.registrarEstudiante(); break; // BD - ON
-            case '2': BD.verEstudiantes(); break; //BD - ON
+            case '1': 
+                console.log("\n--- Registro de Nuevo Estudiante ---");
+                BD.registrarEstudiante(); break; // BD - ON
+            case '2': 
+	            console.clear("\n--- Lista de Alumnos Registrados ---");
+                BD.verEstudiantes(); break; //BD - ON
             case '3': BD.buscarAlumno(); break; //BD - ON
             case '4': BD.modificarEstudiante(); break; //BD - ON
             case '5': BD.eliminarEstudiante(); break; //BD - ON

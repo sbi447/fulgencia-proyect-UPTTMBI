@@ -46,9 +46,12 @@ function menuPrincipal() {
             case '2': 
 	            console.clear("\n--- Lista de Alumnos Registrados ---");
                 BD.verEstudiantes(); break; //BD - ON
-            case '3': BD.buscarAlumno(); break; //BD - ON
-            case '4': BD.modificarEstudiante(); break; //BD - ON
-            case '5': BD.eliminarEstudiante(); break; //BD - ON
+            case '3':
+                BD.buscarAlumno(); break; //BD - ON
+            case '4': 
+                BD.modificarEstudiante(); break; //BD - ON
+            case '5': 
+                BD.eliminarEstudiante(); break; //BD - ON
             case '6': 
 				readline.keyInPause("Cerrando sistema... ¡Hasta luego!");
 				console.clear(); break;

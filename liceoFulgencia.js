@@ -1,11 +1,12 @@
 const prompt = require("prompt-sync")({sigint:true});
 const readline = require('readline-sync');
 const BD = require("./dataBase.js")
+const FM = require("./funcAndMenu.js")
 
 console.clear()
 
 // CONSOLA DE CONTRASEÑA
-BD.blockWithPassword()
+FM.blockWithPassword()
 
 BD.abrirBD();
 
@@ -13,18 +14,9 @@ BD.abrirBD();
 function menuPrincipal() {
     let opcion;
     do {
-        console.log("\n==========================================");
-        console.log("  SISTEMA DE PREINSCRIPCIÓN Y CONSTANCIAS ");
-        console.log("==========================================");
-        console.log("1. Registrar Estudiante");
-        console.log("2. Ver Todos los Estudiantes");
-        console.log("3. Buscar Un Estudiante");
-        console.log("4. Modificar Datos");
-        console.log("5. Eliminar Registro");
-        console.log("6. Salir");
-        
-        opcion = prompt("Seleccione una opción: ");
+        FM.optionsForMenu()
 
+        opcion = prompt("Seleccione una opción: ");
         switch (opcion) {
             case '1': 
                 console.log("\n--- Registro de Nuevo Estudiante ---");

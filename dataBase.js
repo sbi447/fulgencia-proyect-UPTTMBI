@@ -1,25 +1,12 @@
 //DATABASE FULGENCIA
 const prompt = require("prompt-sync")({sigint:true});
 const readline = require('readline-sync');
+let fs = require("fs");
 let estudiantes=[];
 let dataBase;
-let fs = require("fs");
 
-// CONSOLA DE CONTRASEÑA
-module.exports.blockWithPassword=()=>{
-    let Key = "fulgencia123"; let TestKey; let a = 1;
-    console.log("Hello dear user, welcome to FulgenciaRegister\n"); TestKey = prompt("Insert Your Password: ");
+// ALUMNO CLASS:
 
-    while(TestKey!==Key && a<3){
-    	console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
-	    a++;
-	    TestKey = prompt("Insert Your Password: ");
-    }
-
-    if(TestKey===Key){
-	console.log("Your Conection is Succesfull");
-    }
-}
 
 function registarAlumno(ci,nombre,apellido){
     estudiantes.push({
@@ -28,6 +15,7 @@ function registarAlumno(ci,nombre,apellido){
         apellido:apellido
     })
 }
+
 // Función para REGISTRAR (Create) --- BD: ON
 module.exports.registrarEstudiante=()=>{
     let ci = prompt("Ingrese Cédula: ");
@@ -70,34 +58,33 @@ module.exports.modificarEstudiante=()=>{
 
     if (alumno) {
         console.log(`Modificando a: ${alumno.nombre} ${alumno.apellido}`);
-        alumno.nombre = prompt("Nuevo nombre (deja vacío para mantener): ") || alumno.nombre;
-        alumno.apellido = prompt("Nuevo apellido (deja vacío para mantener): ") || alumno.apellido;
+        alumno.nombre = prompt("Nuevo nombre (dejar vacío para mantener): ") || alumno.nombre;
+        alumno.apellido = prompt("Nuevo apellido (dejar vacío para mantener): ") || alumno.apellido;
         console.log(" Datos actualizados correctamente.");
     } else {
         console.log(" Estudiante no encontrado.");
     }
 }
+
 // Función para ELIMINAR (Delete) --- BD: ON
 module.exports.eliminarEstudiante=()=>{
     let ciBusca = prompt("Ingrese la Cédula del alumno a eliminar: ");
     let indice = estudiantes.findIndex(e => e.ci === ciBusca);
 
     if (indice !== -1) {
-        let confirmado = prompt(`¿Seguro que desea eliminar a ${estudiantes[indice].nombre}? (s/n): `);
-        if (confirmado.toLowerCase() === 's'){
-			let Key = "fulgencia123";
-			let TestKey;
-			let a = 1;
-			TestKey = prompt("Insert Your Password for Continue: ");
+        let confirmacion = prompt(`¿Seguro que desea eliminar a ${estudiantes[indice].nombre}? (s/n): `);
+        if (confirmacion.toLowerCase() === 's'){
+			let Key = "fulgencia123"; let TestKey; let a = 1; // Var's
+			TestKey = prompt("Ingrese la contraseña para continuar: ");
 
 			while(TestKey!==Key && a<3){
-				console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
+				console.log("Bienvenido a FulgenciaRegister\n"); TestKey = prompt("Ingrese su Contraseña: ");
 				a++;
-				TestKey = prompt("Insert Your Password: ");
+				TestKey = prompt("Ingrese su Contraseña: ");
 			}
 			if(TestKey===Key){
 				estudiantes.splice(indice, 1);
-				console.log(" Registro eliminado.");
+				console.log(" Registro eliminado...");
 			}
     } else {
         console.log(" No se encontró ningún estudiante con esa cédula.");

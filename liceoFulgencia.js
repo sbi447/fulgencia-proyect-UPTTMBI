@@ -5,25 +5,11 @@ const BD = require("./dataBase.js")
 console.clear()
 
 // CONSOLA DE CONTRASEÑA
-let Key = "fulgencia123";
-let TestKey;
-let a = 1;
-
-console.log("Hello dear user, welcome to FulgenciaRegister\n")
-TestKey = prompt("Insert Your Password: ");
-
-while(TestKey!==Key && a<3){
-	console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
-	a++;
-	TestKey = prompt("Insert Your Password: ");
-}
-	
-if(TestKey===Key){
-	console.log("Your Conection is Succesfull");
+BD.blockWithPassword()
 
 BD.abrirBD();
 
-// --- MENÚ PRINCIPAL (Control de Flujo) ---
+// --- MENÚ PRINCIPAL ---
 function menuPrincipal() {
     let opcion;
     do {
@@ -55,7 +41,8 @@ function menuPrincipal() {
             case '6': 
 				readline.keyInPause("Cerrando sistema... ¡Hasta luego!");
 				console.clear(); break;
-            default: console.log("Opcion no válida, intente de nuevo.");
+            default: 
+                console.log("Opcion no válida, intente de nuevo.");
         }
     } while (opcion !== '6');
 }
@@ -63,4 +50,4 @@ function menuPrincipal() {
 menuPrincipal(); // Iniciar el programa
 
 BD.cerrarBD(); //Cerrar Base de Datos
-}
+

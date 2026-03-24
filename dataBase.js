@@ -5,6 +5,22 @@ let estudiantes=[];
 let dataBase;
 let fs = require("fs");
 
+// CONSOLA DE CONTRASEÑA
+module.exports.blockWithPassword=()=>{
+    let Key = "fulgencia123"; let TestKey; let a = 1;
+    console.log("Hello dear user, welcome to FulgenciaRegister\n"); TestKey = prompt("Insert Your Password: ");
+
+    while(TestKey!==Key && a<3){
+    	console.log("Error, This Password Is Incorrect..."+" Your Count of Errors is: "+a+"/3");
+	    a++;
+	    TestKey = prompt("Insert Your Password: ");
+    }
+
+    if(TestKey===Key){
+	console.log("Your Conection is Succesfull");
+    }
+}
+
 function registarAlumno(ci,nombre,apellido){
     estudiantes.push({
         ci:ci,

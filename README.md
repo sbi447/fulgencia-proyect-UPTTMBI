@@ -1,11 +1,17 @@
 # Proyecto de Informatica | II-IV
 
-En Base a la Idea y Diseño de Proyecto para el TSU en Informatica || UPTTMBI
+Este proyecto esta asignado a la materia de Programación y se liga con el diseño de proyecto para el TSU en Informatica || UPTTMBI
 
-Basado en el "Liceo Fulgencia Jimenez De Olmos" - AREA: Control de Estudio & Coordinación.
+**INSTITUTO OBJETIVO**: "Liceo Fulgencia Jimenez De Olmos"
+**AREA**: Control de Estudio & Coordinación.
 
-## Contributors & Creators:
+## Creadores del Proyecto:
+
 - Sebastian Briceño
 - Claudia Montilla
 - Ruthmar Verbel
-- Mariayola
+
+## Aplicación:
+
+El proyecto funcionara como un registro de estudiantes en función a realizar preinscripciones y a la expedicion de Constancias y Cartas..
+Su desarrollo nace de las carencias tecnologicas de la institución objetivo en cuanto a registro, tiempos de respuesta y automatización de procesos.

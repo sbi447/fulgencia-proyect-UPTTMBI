@@ -1,18 +1,16 @@
 const prompt = require("prompt-sync")({sigint:true});
 const readline = require('readline-sync');
-const BD = require("./dataBase.js")
-const FM = require("./funcAndMenu.js")
+const {Estudiantes} = require("./dataBase.js")
+let BDEstudiantes = new Estudiantes("dataBase.json");
+const FM = require("./funcToMain.js")
 
 console.clear()
 
 // CONSOLA DE CONTRASEÑA
 FM.blockWithPassword()
 
-BD.abrirBD();
-
 // --- MENÚ PRINCIPAL ---
-function menuPrincipal() {
-    let opcion;
+let opcion;
     do {
         FM.optionsForMenu()
 
@@ -20,16 +18,16 @@ function menuPrincipal() {
         switch (opcion) {
             case '1': 
                 console.log("\n--- Registro de Nuevo Estudiante ---");
-                BD.registrarEstudiante(); break; // BD - ON
+                break;
             case '2': 
 	            console.clear("\n--- Lista de Alumnos Registrados ---");
-                BD.verEstudiantes(); break; //BD - ON
+                break;
             case '3':
-                BD.buscarAlumno(); break; //BD - ON
+                break;
             case '4': 
-                BD.modificarEstudiante(); break; //BD - ON
+                break;
             case '5': 
-                BD.eliminarEstudiante(); break; //BD - ON
+                break;
             case '6': 
 				readline.keyInPause("Cerrando sistema... ¡Hasta luego!");
 				console.clear(); break;
@@ -39,7 +37,6 @@ function menuPrincipal() {
     } while (opcion !== '6');
 }
 
-menuPrincipal(); // Iniciar el programa
 
-BD.cerrarBD(); //Cerrar Base de Datos
+BD.guardar(); //Cerrar Base de Datos
 

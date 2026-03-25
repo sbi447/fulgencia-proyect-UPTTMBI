@@ -1,14 +1,5 @@
 {
   "estudiantes": [
-    {
-      "ci": "32117825",
-      "nombre": "Sebastian",
-      "apellido": "Briceno"
-    },
-    {
-      "ci": "33157825",
-      "nombre": "Clau",
-      "apellido": "Montilla"
-    }
+
   ]
 }

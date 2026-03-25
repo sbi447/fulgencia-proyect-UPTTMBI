@@ -11,9 +11,9 @@ class defaultperson{
         this.apellido = apellido
         this.segApellido = apellido
     }
-   
 }
 
+// CLASS ALUMNO
 class Alumno extends defaultperson{
     
     constructor(ci, nombre, segNombre, apellido, segApellido,genero){
@@ -25,11 +25,12 @@ class Alumno extends defaultperson{
         return `Alumno: ${this.nombre} ${this.segNombre} ${this.apellido} ${this.segApellido} | CI: ${this.ci} | Genero: ${this.genero}`;
     }
 
-    modificar(nombre,segNombre,apellido,segApellido,genero){
-        this.nombre=nombre
+    modificar(newdates){
+        this.ci = ci
+        this.nombre = nombre
         this.segNombre = segNombre
-        this.apellido= apellido
-        this.segApellido= segApellido
+        this.apellido = apellido
+        this.segApellido = apellido
     }
 }
 
@@ -53,18 +54,29 @@ class Estudiantes {
         }
     }
 
-    registrarAlumno(ci, nombre, apellido) {
-        const nuevoAlumno = new Alumno(ci, nombre, apellido);
+    registrarAlumno(info){
+        const nuevoAlumno = new Alumno(ci, nombre, segNombre, apellido, segApellido,genero);
         this.#Lista.push(nuevoAlumno);
     }
 
-    modificarAlumno(ci,nombre,apellido){
-         let alumno = this.buscarAlumno(ci);
-         alumno.modificar(nombre,apellido);
+    todosLosAlumnos(){
+        return this.#Lista;
     }
 
     buscarAlumno(ci) {
         return this.#Lista.find(alumno => alumno.ci == ci);
+        
+    }
+
+    modificarAlumno(ci, nombre, segNombre, apellido, segApellido,genero){
+         let alumno = this.buscarAlumno(ci);
+         alumno.modificar({
+             nombre: nombreNew,
+             segNombre: segNombreNew,
+             apellido: apellidoNew,
+             segApellido: segApellidoNew,
+             genero:generoNew
+         });
     }
 
     eliminarAlumno(ci) {

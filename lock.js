@@ -18,15 +18,3 @@ module.exports.blockWithPassword=()=>{
     }
 }
 
-// MOSTRAR OPCIONES DEL MENU
-module.exports.optionsForMenu=()=>{
-    console.log("\n==========================================");
-    console.log("  SISTEMA DE PREINSCRIPCIÓN Y CONSTANCIAS ");
-    console.log("==========================================");
-    console.log("1. Registrar Estudiante");
-    console.log("2. Ver Todos los Estudiantes");
-    console.log("3. Buscar Un Estudiante");
-    console.log("4. Modificar Datos");
-    console.log("5. Eliminar Registro");
-    console.log("6. Salir");
-}

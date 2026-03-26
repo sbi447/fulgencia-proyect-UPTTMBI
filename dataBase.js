@@ -16,21 +16,24 @@ class defaultperson{
 // CLASS ALUMNO
 class Alumno extends defaultperson{
     
-    constructor(ci, nombre, segNombre, apellido, segApellido,genero){
+    constructor(ci, nombre, segNombre, apellido, segApellido,tlfno){
         super(ci,nombre,segNombre,apellido,segApellido)
-        this.genero = genero
+        this.tlfno = tlfno
     }
         
     Informacion(){
-        return `Alumno: ${this.nombre} ${this.segNombre} ${this.apellido} ${this.segApellido} | CI: ${this.ci} | Genero: ${this.genero}`;
+        return `
+    Alumno: ${this.nombre} ${this.segNombre} ${this.apellido} ${this.segApellido}
+    tlfno: ${this.tlfno}
+        `
     }
 
-    modificar(nombre, segNombre, apellido, segApellido,genero){
+    modificar(nombre, segNombre, apellido, segApellido,tlfno){
         this.nombre = nombre
         this.segNombre = segNombre
         this.apellido = apellido
         this.segApellido = segApellido
-        this.genero = genero
+        this.tlfno = tlfno
     }
 }
 
@@ -44,7 +47,7 @@ class Estudiantes {
         if (fs.existsSync(JsonName)) {
             const dataBase = fs.readFileSync(JsonName, "utf8");
             const data = JSON.parse(dataBase).estudiantes;
-            this.#Lista = data.map(a => new Alumno(a.ci, a.nombre, a.segNombre, a.apellido, a.segApellido, a.genero));
+            this.#Lista = data.map(a => new Alumno(a.ci, a.nombre, a.segNombre, a.apellido, a.segApellido, a.tlfno));
         } else {
             const dataBase = JSON.stringify({
                 estudiantes: []
@@ -53,8 +56,8 @@ class Estudiantes {
         }
     }
 
-    registrarAlumno(ci, nombre, segNombre, apellido, segApellido,genero){
-        const nuevoAlumno = new Alumno(ci, nombre, segNombre, apellido, segApellido,genero);
+    registrarAlumno(ci, nombre, segNombre, apellido, segApellido,tlfno){
+        const nuevoAlumno = new Alumno(ci, nombre, segNombre, apellido, segApellido,tlfno);
         this.#Lista.push(nuevoAlumno);
     }
 
@@ -63,13 +66,12 @@ class Estudiantes {
     }
 
     buscarAlumno(ci) {
-        return this.#Lista.find(alumno => alumno.ci == ci);
-        
+        return this.#Lista.find(alumno => alumno.ci == ci); 
     }
 
-    modificarAlumno(ci, nombre, segNombre, apellido, segApellido,genero){
+    modificarAlumno(ci, nombre, segNombre, apellido, segApellido,tlfno){
          let alumno = this.buscarAlumno(ci);
-         alumno.modificar(nombre, segNombre, apellido, segApellido, genero);
+         alumno.modificar(nombre, segNombre, apellido, segApellido, tlfno);
     }
 
     eliminarAlumno(ci) {

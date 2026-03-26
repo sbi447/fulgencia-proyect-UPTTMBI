@@ -7,7 +7,7 @@ const CM = require("./lock.js"); // FM = FUNCTIONS TO MAIN
 console.clear()
 
 // CONSOLA DE CONTRASEÑA
-CM.blockWithPassword()
+//CM.lockWithPassword()
 
 // MENÚ PRINCIPAL
 let opcion;
@@ -25,19 +25,19 @@ do {
     opcion = prompt("Seleccione una opción: ");
 
     switch (opcion) {
-        case '1': 
+    case '1': 
             console.log("\n--- Registro de Nuevo Estudiante ---");
             let cedula = prompt("Ingrese la cedula: ")
-            let nombre = prompt("Ingrese el nombre: ");
-            let segNombre = prompt("Ingrese el segundo nombre: ");
-            let apellido = prompt("Ingrese el apellido: ");
-            let segApellido = prompt("Ingrese el segundo apellido: ");
-            let genero = prompt("Ingrese el genero: ")
             if (BD.existeAlumno(cedula)) {
                 readline.keyInPause("ACCION DENEGADA: alumno ya existe");
                 break;
             }
-            BD.registrarAlumno(cedula, nombre, segNombre, apellido, segApellido, genero)
+            let nombre = prompt("Ingrese el nombre: ");
+            let segNombre = prompt("Ingrese el segundo nombre: ");
+            let apellido = prompt("Ingrese el apellido: ");
+            let segApellido = prompt("Ingrese el segundo apellido: ");
+            let tlfno = prompt("Ingrese el tlfno: ")
+            BD.registrarAlumno(cedula, nombre, segNombre, apellido, segApellido, tlfno)
             readline.keyInPause("Estudiante registrado!")
         break;
         case '2': 
@@ -46,13 +46,13 @@ do {
         break;
         case '3':
             console.clear("\n--- Buscar Estudiante ---")
-            ci = prompt("Ingrese la cedula del Estudiante: ")
-            if (!BD.existeAlumno(ci)){
+            checkCedula = prompt("Ingrese la cedula del Estudiante: ")
+            if (!BD.existeAlumno(checkCedula)){
                 readline.keyInPause("¡Estudiante No Registrado - No Existente!");
                 break;
             }
-            let alumno = BD.buscarAlumno(ci);
-            console.table(alumno.Informacion());
+            let alumno = BD.buscarAlumno(checkCedula);
+            console.log(alumno.Informacion());
         break;
         case '4':
             console.log("\n---Modificación de Alumno")
@@ -61,12 +61,27 @@ do {
                 console.log("El alumno no existe..."); readline.keyInPause()
                 break;
             }
-            let nombreNew = prompt("Ingrese primer nombre: ")
-            let segNombreNew = prompt("Ingrese segundo nombre: ")
-            let apellidoNew = prompt("Ingrese primer apellido: ")
-            let segApellidoNew = prompt("Ingrese segundo apellido: ")
-            let generoNew = prompt("Ingrese el genero: ")
-            BD.modificarAlumno(nombreNew, segNombreNew, apellidoNew, segApellidoNew, generoNew)
+            let Key = "fulgencia123"; let TestKey; let a = 1;
+            alumnoModify = BD.buscarAlumno(ci);
+            console.log(`Se modificara a: ${alumnoModify.Informacion()}\n`); TestKey = prompt("Ingrese su Contraseña: ");
+
+            while(TestKey!==Key && a<3){
+    	        console.log("Error, la Contraseña es Incorrecta..."+" Número de Errores: "+a+"/3");
+	            a++;
+	            TestKey = prompt("Ingrese su Contraseña: ");
+            }
+
+            if(TestKey===Key){
+                console.clear()
+	            console.log("---Verificación Aprobada---");
+            }
+ 
+            let nombreNew = prompt("Ingrese primer nombre: ") || alumnoModify.nombre
+            let segNombreNew = prompt("Ingrese segundo nombre: ") || alumnoModify.segNombre
+            let apellidoNew = prompt("Ingrese primer apellido: ") || alumnoModify.apellido
+            let segApellidoNew = prompt("Ingrese segundo apellido: ") || alumnoModify.segApellido
+            let tlfnoNew = prompt("Ingrese el tlfno: ") || alumnoModify.tlfno
+            BD.modificarAlumno(ci, nombreNew, segNombreNew, apellidoNew, segApellidoNew, tlfnoNew)
             console.log("El alumno a sido modificado.. ")
         break;
         case '5': 

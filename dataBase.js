@@ -24,8 +24,7 @@ class Alumno extends defaultperson{
     Informacion(){
         return `
     Alumno: ${this.nombre} ${this.segNombre} ${this.apellido} ${this.segApellido}
-    tlfno: ${this.tlfno}
-        `
+    tlfno: ${this.tlfno}`
     }
 
     modificar(nombre, segNombre, apellido, segApellido,tlfno){

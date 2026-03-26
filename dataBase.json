@@ -1,12 +1,3 @@
 {
-  "estudiantes": [
-    {
-      "ci": "32117825",
-      "nombre": "Sebastian",
-      "segNombre": "Jose",
-      "apellido": "Briceño",
-      "segApellido": "Muñoz",
-      "tlfno": "04125698425"
-    }
-  ]
+  "estudiantes": []
 }

@@ -13,5 +13,5 @@ Este proyecto esta asignado a la materia de Programaci처n y se liga con el dise�
 
 ## Aplicaci처n:
 
-El proyecto funcionara como un registro de estudiantes en funci처n a realizar preinscripciones y a la expedicion de Constancias y Cartas..
+El proyecto funcionara para la realizaci처n de preinscripciones, expedicion de Constancias y Cartas, y registro de estudiantes...
 Su desarrollo nace de las carencias tecnologicas de la instituci처n objetivo en cuanto a registro, tiempos de respuesta y automatizaci처n de procesos.

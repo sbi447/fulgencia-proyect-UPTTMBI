@@ -1,5 +1,12 @@
 {
   "estudiantes": [
-
+    {
+      "ci": "32117825",
+      "nombre": "Sebastian",
+      "segNombre": "Jose",
+      "apellido": "Briceño",
+      "segApellido": "Muñoz",
+      "genero": "Masculino"
+    }
   ]
 }

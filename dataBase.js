@@ -9,7 +9,7 @@ class defaultperson{
         this.nombre = nombre
         this.segNombre = segNombre
         this.apellido = apellido
-        this.segApellido = apellido
+        this.segApellido = segApellido
     }
 }
 
@@ -25,12 +25,12 @@ class Alumno extends defaultperson{
         return `Alumno: ${this.nombre} ${this.segNombre} ${this.apellido} ${this.segApellido} | CI: ${this.ci} | Genero: ${this.genero}`;
     }
 
-    modificar(newdates){
-        this.ci = ci
+    modificar(nombre, segNombre, apellido, segApellido,genero){
         this.nombre = nombre
         this.segNombre = segNombre
         this.apellido = apellido
-        this.segApellido = apellido
+        this.segApellido = segApellido
+        this.genero = genero
     }
 }
 
@@ -44,8 +44,7 @@ class Estudiantes {
         if (fs.existsSync(JsonName)) {
             const dataBase = fs.readFileSync(JsonName, "utf8");
             const data = JSON.parse(dataBase).estudiantes;
-
-        this.#Lista = data.map(a => new Alumno(a.ci, a.nombre, a.segNombre, a.apellido, a.segApellido, a.genero));
+            this.#Lista = data.map(a => new Alumno(a.ci, a.nombre, a.segNombre, a.apellido, a.segApellido, a.genero));
         } else {
             const dataBase = JSON.stringify({
                 estudiantes: []
@@ -54,7 +53,7 @@ class Estudiantes {
         }
     }
 
-    registrarAlumno(info){
+    registrarAlumno(ci, nombre, segNombre, apellido, segApellido,genero){
         const nuevoAlumno = new Alumno(ci, nombre, segNombre, apellido, segApellido,genero);
         this.#Lista.push(nuevoAlumno);
     }
@@ -70,13 +69,7 @@ class Estudiantes {
 
     modificarAlumno(ci, nombre, segNombre, apellido, segApellido,genero){
          let alumno = this.buscarAlumno(ci);
-         alumno.modificar({
-             nombre: nombreNew,
-             segNombre: segNombreNew,
-             apellido: apellidoNew,
-             segApellido: segApellidoNew,
-             genero:generoNew
-         });
+         alumno.modificar(nombre, segNombre, apellido, segApellido, genero);
     }
 
     eliminarAlumno(ci) {

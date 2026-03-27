@@ -2,8 +2,9 @@
 
 Este proyecto esta asignado a la materia de Programación y se liga con el diseño de proyecto para el TSU en Informatica || UPTTMBI
 
--**INSTITUTO OBJETIVO**: "Liceo Fulgencia Jimenez De Olmos"
--**AREA**: Control de Estudio & Coordinación.
+**INSTITUTO OBJETIVO**: "Liceo Fulgencia Jimenez De Olmos"
+
+**AREA**: Control de Estudio & Coordinación.
 
 ## Creadores del Proyecto:
 
@@ -13,5 +14,5 @@ Este proyecto esta asignado a la materia de Programación y se liga con el dise�
 
 ## Aplicación:
 
-El proyecto funcionara para la realización de preinscripciones, expedicion de Constancias y Cartas, y registro de estudiantes...
+El proyecto funcionara para la realización de preinscripciones y registro de estudiantes, más adelante se espera anexar la expedición de constancias y cartas...
 Su desarrollo nace de las carencias tecnologicas de la institución objetivo en cuanto a registro, tiempos de respuesta y automatización de procesos.

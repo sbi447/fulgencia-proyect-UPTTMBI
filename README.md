@@ -2,8 +2,8 @@
 
 Este proyecto esta asignado a la materia de Programación y se liga con el diseño de proyecto para el TSU en Informatica || UPTTMBI
 
-**INSTITUTO OBJETIVO**: "Liceo Fulgencia Jimenez De Olmos"
-**AREA**: Control de Estudio & Coordinación.
+-**INSTITUTO OBJETIVO**: "Liceo Fulgencia Jimenez De Olmos"
+-**AREA**: Control de Estudio & Coordinación.
 
 ## Creadores del Proyecto:
 

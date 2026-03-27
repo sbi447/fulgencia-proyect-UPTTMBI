@@ -28,13 +28,16 @@ registerStudent=()=>{
     if (BD.existeAlumno(cedula)) {
         readline.keyInPause("ACCION DENEGADA: alumno ya existe");
     }else{
-        let nombre = prompt("Ingrese el nombre: ");
+        let nombre = prompt("Ingrese el primer nombre: ");
         let segNombre = prompt("Ingrese el segundo nombre: ");
-        let apellido = prompt("Ingrese el apellido: ");
+        let apellido = prompt("Ingrese el primer apellido: ");
         let segApellido = prompt("Ingrese el segundo apellido: ");
-        let tlfno = prompt("Ingrese el tlfno: ")
-        BD.registrarAlumno(cedula, nombre, segNombre, apellido, segApellido, tlfno)
-        readline.keyInPause("Estudiante registrado!")
+        let tlfno = prompt("Ingrese N° telefonico del estudiante: ")
+        let email = prompt("Ingrese email del estudiante: ")
+        BD.registrarAlumno(cedula, nombre, segNombre, apellido, segApellido, tlfno, email)
+        BD.guardar()
+        readline.keyInPause("¡Estudiante Registrado!")
+        console.clear()
     }
 }
 
@@ -55,14 +58,14 @@ searchOneStudent=()=>{
 }
 
 modifyStudent=()=>{
-    console.clear("\n---Modificación de Alumno")
+    console.clear("\n--- Modificación de Estudiantes ---")
     let ci = prompt("Ingrese la Cedula del Estudiante a Modificar: ")
     if(!BD.existeAlumno(ci)){
         console.clear(); readline.keyInPause("El alumno no existe...")
     }else{
         let Key = "fulgencia123"; let TestKey; let a = 1;
         alumnoModify = BD.buscarAlumno(ci);
-        console.log(`Se modificara a: ${alumnoModify.Informacion()}\n`); TestKey = prompt("Ingrese la Contraseña para Continuar: ");
+        console.log(`Se modificara a: ${alumnoModify.Informacion()}`); TestKey = prompt("Ingrese la Contraseña para Continuar: ");
 
         while(TestKey!==Key && a<4){
     	    console.log("Error, la Contraseña es Incorrecta..."+" Número de Errores: "+a+"/3");
@@ -80,16 +83,18 @@ modifyStudent=()=>{
             let segNombreNew = prompt("Ingrese segundo nombre: ") || alumnoModify.segNombre
             let apellidoNew = prompt("Ingrese primer apellido: ") || alumnoModify.apellido
             let segApellidoNew = prompt("Ingrese segundo apellido: ") || alumnoModify.segApellido
-            let tlfnoNew = prompt("Ingrese el tlfno: ") || alumnoModify.tlfno
-            BD.modificarAlumno(ci, nombreNew, segNombreNew, apellidoNew, segApellidoNew, tlfnoNew)
-            readline.keyInPause("El Estudiante a Sido Modificado con Exito...")
+            let tlfnoNew = prompt("Ingrese N° telefonico del estudiante: ") || alumnoModify.tlfno
+            let emailNew = prompt("Ingrese email del estudiante: ") || alumnoModify.email
+            BD.modificarAlumno(ci, nombreNew, segNombreNew, apellidoNew, segApellidoNew, tlfnoNew, emailNew)
+            BD.guardar()
+            readline.keyInPause("¡El Estudiante a Sido Modificado con Exito!")
             console.clear()
         }
     }
 }
 
 deleteStudent=()=>{
-    console.clear("---Eliminar Estudiante---");
+    console.clear("--- Eliminar Estudiante ---");
     ciDelete = prompt("Ingrese la cedula del alumno ")
     //Comprobacion de existencia
     if (!BD.existeAlumno(ciDelete)){
@@ -114,11 +119,14 @@ deleteStudent=()=>{
             }
             if(testKeyDelete===key1){
                 BD.eliminarAlumno(ciDelete)
+                BD.guardar()
                 readline.keyInPause("¡Estudiante Eliminado!");
             }
         }
     }
 }
+
+exit=()=>{console.clear(); readline.keyInPause("Cerrando sistema... ¡Hasta luego!")}
 
 module.exports = {
     loginLock,
@@ -127,4 +135,5 @@ module.exports = {
     searchOneStudent,
     modifyStudent,
     deleteStudent,
+    exit,
 }

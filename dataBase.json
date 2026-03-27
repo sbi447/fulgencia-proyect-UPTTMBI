@@ -1,3 +1,13 @@
 {
-  "estudiantes": []
+  "estudiantes": [
+    {
+      "ci": "32117825",
+      "nombre": "Sebastian",
+      "segNombre": "Jose",
+      "apellido": "Briceño",
+      "segApellido": "Muñoz",
+      "tlfno": "04147381675",
+      "email": "sbidev447@gmail.com"
+    }
+  ]
 }

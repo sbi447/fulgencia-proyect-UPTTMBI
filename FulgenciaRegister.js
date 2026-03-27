@@ -36,12 +36,9 @@ do {
             fm.deleteStudent()
             break;
         case '6':
-            console.clear(); readline.keyInPause("Cerrando sistema... ¡Hasta luego!");
+            fm.exit()
             break;
         default: 
             console.log("Opcion no válida, intente de nuevo.");
     }
 } while (opcion !== '6');
-
-BD.guardar(); //Cerrar Base de Datos
-

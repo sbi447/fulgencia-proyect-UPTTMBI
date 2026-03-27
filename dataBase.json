@@ -3,17 +3,11 @@
     {
       "ci": "32117825",
       "nombre": "Sebastian",
-      "apellido": "Briceno"
-    },
-    {
-      "ci": "32564788",
-      "nombre": "Karmelo",
-      "apellido": "Montes"
-    },
-    {
-      "ci": "33157825",
-      "nombre": "Clau",
-      "apellido": "Montilla"
+      "segNombre": "Jose",
+      "apellido": "Briceño",
+      "segApellido": "Muñoz",
+      "tlfno": "04147381675",
+      "email": "sbidev447@gmail.com"
     }
   ]
 }

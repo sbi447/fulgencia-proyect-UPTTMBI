@@ -1,5 +1,6 @@
 const fm = require('./funcMain.js')
 const prompt = require("prompt-sync")({sigint:true});
+const readline = require('readline-sync');
 
 console.clear()
 // Login
@@ -36,9 +37,10 @@ do {
             fm.deleteStudent()
             break;
         case '6':
-            fm.exit()
+            console.clear(); readline.keyInPause("Cerrando sistema... ¡Hasta luego!");
             break;
         default: 
             console.log("Opcion no válida, intente de nuevo.");
     }
 } while (opcion !== '6');
+

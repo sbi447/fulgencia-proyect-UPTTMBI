@@ -4,22 +4,23 @@ let fs = require("fs");
 // Clase Default para Persona
 class defaultperson{
 
-    constructor(ci, nombre, segNombre, apellido, segApellido){
+    constructor(ci, nombre, segNombre, apellido, segApellido, tlfno, email){
         this.ci = ci
         this.nombre = nombre
         this.segNombre = segNombre
         this.apellido = apellido
         this.segApellido = segApellido
+        this.tlfno = tlfno
+        this.email = email
     }
 }
+
 
 // CLASS ALUMNO
 class Alumno extends defaultperson{
     
     constructor(ci, nombre, segNombre, apellido, segApellido,tlfno,email){
-        super(ci,nombre,segNombre,apellido,segApellido)
-        this.tlfno = tlfno
-        this.email = email
+        super(ci,nombre,segNombre,apellido,segApellido, tlfno, email)
     }
         
     Informacion(){
